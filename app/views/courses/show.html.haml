@@ -1,0 +1,29 @@
+%h2= "#{@course.title} - #{@course.name}"
+%ul#details
+  %li
+    Start Date:
+    = @course.startDate.strftime("%B %d, %Y")
+  %li
+    End Date:
+    = @course.endDate.strftime("%B %d, %Y")
+  %li
+    Webpage:
+    = link_to @course.webpage, @course.webpage
+  %li
+    Credit/No Credit:
+    = @course.send('C/NCR') ? "Yes" : "No"
+= link_to 'Delete course', course_path(@course.id), :method => :delete, :confirm => 'Are you sure?'
+%h3 Assessments
+%table#assessments
+  %thead
+    %tr
+      %th Title
+      %th Due Date
+      %th Weight
+  %tbody
+    - @course.assessments.each do |assessment|
+      %tr
+        %td= assessment.title 
+        %td= assessment.duedate
+        %td= assessment.weight
+= link_to 'Add Assessment', new_course_assessment_path(@course.id)

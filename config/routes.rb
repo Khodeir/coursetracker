@@ -55,4 +55,15 @@ Coursetracker::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  resources :courses do 
+    #resources :assessments
+  end
+  
+  #match '/dorothy' => 'dorothy#overview', :via => :get
+  #match '/dorothy' => 'dorothy#course_assessment', :via => :post
+  get   '/login', :to => 'sessions#new', :as => :login
+  match '/auth/:provider/callback', :to => 'sessions#create'
+  match '/auth/failure', :to => 'sessions#failure'
+  match '/logout', :to => 'sessions#destroy'
 end
+

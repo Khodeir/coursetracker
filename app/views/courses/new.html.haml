@@ -1,0 +1,20 @@
+%h2 New Course Page
+
+= form_tag courses_path do
+
+  = label :course, :title, 'Title'
+  = text_field :course, 'title'
+
+  = label :course, :name, 'Name'
+  = text_field :course, 'name'
+
+  = label :course, :startDate, 'Date Started'
+  = date_select :course, :startDate
+
+  = label :course, :endDate, 'End Date'
+  = date_select :course, :endDate
+
+  = label :course, 'C/NCR', 'Credit/NoCredit'
+  = check_box :course, 'C/NCR' 
+
+  = submit_tag 'Save Changes'
