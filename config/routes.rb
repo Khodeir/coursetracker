@@ -1,4 +1,8 @@
 Coursetracker::Application.routes.draw do
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
+  devise_for :students
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -56,14 +60,15 @@ Coursetracker::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
   resources :courses do 
-    #resources :assessments
+    resources :assignments
   end
-  
+
+  root :to => 'controlpanel#home'
   #match '/dorothy' => 'dorothy#overview', :via => :get
   #match '/dorothy' => 'dorothy#course_assessment', :via => :post
-  get   '/login', :to => 'sessions#new', :as => :login
-  match '/auth/:provider/callback', :to => 'sessions#create'
-  match '/auth/failure', :to => 'sessions#failure'
-  match '/logout', :to => 'sessions#destroy'
+  #get   '/login', :to => 'sessions#new', :as => :login
+  #match '/auth/:provider/callback', :to => 'sessions#create'
+  #match '/auth/failure', :to => 'sessions#failure'
+  #match '/logout', :to => 'sessions#destroy'
 end
 

@@ -11,14 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131005185902) do
+ActiveRecord::Schema.define(:version => 20131016202739) do
 
-  create_table "authorizations", :force => true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.integer  "student_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "assignments", :force => true do |t|
+    t.string   "name"
+    t.datetime "due_date"
+    t.datetime "release_date"
+    t.float    "weight"
+    t.integer  "course_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "courses", :force => true do |t|
@@ -32,21 +34,29 @@ ActiveRecord::Schema.define(:version => 20131005185902) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "sessions", :force => true do |t|
-    t.string   "session_id", :null => false
-    t.text     "data"
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "students", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "name"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "students", ["email"], :name => "index_students_on_email", :unique => true
+  add_index "students", ["reset_password_token"], :name => "index_students_on_reset_password_token", :unique => true
 
 end

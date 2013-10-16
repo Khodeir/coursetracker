@@ -8,22 +8,20 @@
     = @course.endDate.strftime("%B %d, %Y")
   %li
     Webpage:
-    = link_to @course.webpage, @course.webpage
-  %li
-    Credit/No Credit:
-    = @course.send('C/NCR') ? "Yes" : "No"
+    = @course.webpage
+
 = link_to 'Delete course', course_path(@course.id), :method => :delete, :confirm => 'Are you sure?'
-%h3 Assessments
-%table#assessments
+%h3 Assignments
+%table#assignments
   %thead
     %tr
       %th Title
       %th Due Date
       %th Weight
   %tbody
-    - @course.assessments.each do |assessment|
+    - @course.assignments.each do |assignment|
       %tr
-        %td= assessment.title 
-        %td= assessment.duedate
-        %td= assessment.weight
-= link_to 'Add Assessment', new_course_assessment_path(@course.id)
+        %td= assignment.name 
+        %td= assignment.due_date
+        %td= assignment.weight
+= link_to 'Add Assessment', new_course_assignment_path(@course.id)

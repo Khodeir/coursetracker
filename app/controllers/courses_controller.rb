@@ -1,23 +1,25 @@
 class CoursesController < ApplicationController
+  before_filter :authenticate_student!
   def index
-    @courses = @current_user.courses
+    @courses = current_student.courses
   end
   def new
   end
   def create
-    @course = @current_user.courses.build params[:course]
+    @course = current_student.courses.build params[:course]
     @course.save
     flash[:notice] = @course.nil? ? "#{@course.title} was not created." : "#{@course.title} was created."
     redirect_to courses_path
   end
   def show
     id = params[:id]
-    @course = @current_user.courses.select {|c| c.id == id}
+    @course = current_student.courses.find(id)
   end
   def destroy
     id = params[:id]
-    @course = Course.destroy_by_id_and_student_id(id, session[:student_id])
-    flash[:notice] = "#{@course.title} was deleted."
+    course = current_student.courses.find(id)
+    course.destroy()
+    flash[:notice] = "#{course.title} was deleted."
     redirect_to courses_path
   end
 end
