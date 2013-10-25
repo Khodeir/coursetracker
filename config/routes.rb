@@ -61,6 +61,7 @@ Coursetracker::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   resources :courses do 
     resources :assignments
+    resources :exams
   end
 
   root :to => 'controlpanel#home'

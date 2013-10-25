@@ -4,12 +4,16 @@
   <title>Coursetracker</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "bootstrap_and_overrides" %>
+  <%= stylesheet_link_tag    "bootstrap_and_overrides" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 <%= yield %>
-<p><%= link_to('Sign Out', destroy_student_session_path, :method => :delete) unless not student_signed_in?%></p>
+<div>
+	<%= link_to('Sign Out', destroy_student_session_path, :method => :delete) unless not student_signed_in?%>
+</div>
 </body>
 </html>

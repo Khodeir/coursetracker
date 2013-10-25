@@ -12,16 +12,18 @@
 
 = link_to 'Delete course', course_path(@course.id), :method => :delete, :confirm => 'Are you sure?'
 %h3 Assignments
-%table#assignments
+%table{:id => "assignments", :border => "1"}
   %thead
     %tr
       %th Title
+      %th Release Date
       %th Due Date
       %th Weight
   %tbody
-    - @course.assignments.each do |assignment|
+    - @course.assessments.assignments.each do |assignment|
       %tr
         %td= assignment.name 
-        %td= assignment.due_date
+        %td= assignment.start_at
+        %td= assignment.end_at
         %td= assignment.weight
 = link_to 'Add Assessment', new_course_assignment_path(@course.id)

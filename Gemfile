@@ -9,8 +9,13 @@ gem 'haml'
 gem 'devise'
 gem 'sqlite3'
 gem 'event-calendar', :require => 'event_calendar'
-
-
+gem "therubyracer"
+gem "less"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem "font-awesome-rails"
+gem 'therubyracer'
+gem 'less-rails-fontawesome'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -29,7 +34,7 @@ group :test, :development do
   gem 'capybara'
   gem 'ruby-debug19'
 end
-gem 'jquery-rails'
+gem 'jquery-rails', "~> 2.3.0"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
