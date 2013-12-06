@@ -1,0 +1,18 @@
+%ul#details
+  %li
+    Start Date:
+    = @course.startDate.strftime("%B %d, %Y")
+  %li
+    End Date:
+    = @course.endDate.strftime("%B %d, %Y")
+  %li
+    Webpage:
+    = @course.webpage
+
+= link_to 'Delete course', course_path(@course.id), :method => :delete, :confirm => 'Are you sure?'
+%h3 Assignments:
+= render 'course_assessments_list', :@assessments => @course.assignments
+= link_to 'Add Assignment', new_course_assignment_path(@course.id)
+%h3 Exams:
+= render 'course_assessments_list', :@assessments => @course.exams
+= link_to 'Add Exam', new_course_exam_path(@course.id)

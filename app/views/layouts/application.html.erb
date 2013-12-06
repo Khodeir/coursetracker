@@ -11,7 +11,14 @@
 <body>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+<div class="row">
+<div class="span6">
 <%= yield %>
+</div>
+<div class="span6">
+    <%= render 'calendar/calendar' %>
+</div>
+</div>
 <div>
 	<%= link_to('Sign Out', destroy_student_session_path, :method => :delete) unless not student_signed_in?%>
 </div>

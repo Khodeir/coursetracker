@@ -1,0 +1,14 @@
+%table
+  %thead
+    %tr
+      %th Title
+      %th Start Date
+      %th End Date
+      %th Weight
+  %tbody
+    - @assessments.each do |assessment|
+      %tr
+        %td= assessment.name 
+        %td= assessment.start_at
+        %td= assessment.end_at
+        %td= assessment.weight

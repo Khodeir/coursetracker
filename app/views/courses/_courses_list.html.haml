@@ -1,0 +1,13 @@
+%table#courses
+  %thead
+    %tr
+      %th Title
+      %th Name
+      %th Course Website
+  %tbody
+    - @courses.each do |course|
+      %tr
+        %td= link_to "#{course.title} details", course_path(course)
+        %td= course.name
+        %td= link_to "Webpage for #{course.title}", course.webpage, :target => "_blank"
+       

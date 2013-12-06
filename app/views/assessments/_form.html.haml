@@ -1,0 +1,14 @@
+= label :course_assessment, :name, 'Name'
+= text_field :course_assessment, :name
+
+= label :course_assessment, :start_at, 'Date Available'
+= date_select :course_assessment, :start_at
+
+= label :course_assessment, :end_at, 'Due Date'
+= date_select :course_assessment, :end_at
+
+= label :course_assessment, :weight, 'Percentage Weight'
+= number_field(:course_assessment, :weight, {:min => 0, :max => 100, :step => 5})	
+
+
+= submit_tag 'Save Changes'

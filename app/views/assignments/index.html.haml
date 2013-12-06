@@ -1,0 +1,3 @@
+%h2= "All Assignments for #{@course.title}"
+=render 'assessments/index'
+= link_to 'Add Assignment', new_course_assignment_path(@course.id)

@@ -1,0 +1,15 @@
+- if @assessments
+  %table{:id => "assessments", :border => "1"}
+    %thead
+      %tr
+        %th Title
+        %th Release Date
+        %th Due Date
+        %th Weight
+    %tbody
+      - @assessments.each do |assessments|
+        %tr
+          %td= link_to assessments.name, course_assignment_path(assessments.course, assessments)
+          %td= assessments.start_at
+          %td= assessments.end_at
+          %td= assessments.weight

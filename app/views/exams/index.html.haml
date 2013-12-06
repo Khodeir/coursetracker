@@ -1,0 +1,3 @@
+%h2= "All Exams for #{@course.title}"
+= render 'assessments/index'
+= link_to 'Add Exam', new_course_exam_path(@course.id)

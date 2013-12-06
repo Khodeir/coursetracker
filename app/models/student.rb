@@ -8,6 +8,8 @@ class Student < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :courses
-  has_many :assignments, through: :courses
+  has_many :assessments, through: :courses
+  has_many :assignments, through: :courses, source: :assessments
+  has_many :exams, through: :courses, source: :assessments
   attr_accessible :email, :name
 end

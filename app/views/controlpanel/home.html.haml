@@ -1,0 +1,7 @@
+
+= stylesheet_link_tag "controlpanel"
+= javascript_include_tag "controlpanel"
+%h2 Control Panel
+%div{:id => "content"}
+  %div{:id => "coursenav"}
+    = render 'courses/courses_list'

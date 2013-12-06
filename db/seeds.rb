@@ -5,6 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+color_values = ['blue', 'green', 'red', 'yellow', 'magenta']
+color_values.each do |c|
+	Color.create(:value => c)
+end
 Student.create(:email => 'foobar@gmail.com', :password => '1234foo', :password_confirmation => '1234foo')
 student = Student.find_by_email('foobar@gmail.com')
 courses = [
@@ -20,9 +24,10 @@ assignments = [
 	["A5", 10, Date.current + 12.week, Date.current+14.weeks]
 ]
 
-courses.each do |c| 
+courses.each_with_index do |c, i| 
+	color = Color.find_by_value(color_values[i])
 	course = student.courses.build({"title"=>c[0], "name"=>c[1], 
-		"startDate" => Date.current, "endDate" => Date.current + 4.months})
+		"startDate" => Date.current, "endDate" => Date.current + 4.months, :color=>color})
 	assignments.each do |a|
 		assignment = course.assessments.build({:name => a[0], :weight => a[1], :start_at => a[2], :end_at => a[3]})
 		assignment.type = "Assignment"

@@ -1,0 +1,3 @@
+%h2= "Assignments Page - " + @course.name
+= form_tag course_assignments_path(@course.id)
+= render 'assessments/form'
