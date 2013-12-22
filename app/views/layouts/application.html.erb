@@ -9,18 +9,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<div class="row">
-<div class="span6">
-<%= yield %>
-</div>
-<div class="span6">
-    <%= render 'calendar/calendar' %>
-</div>
-</div>
-<div>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+	<div id="siteheader" class="row">
+		<div class="span12">
+		<h1> Coursetracker </h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6">
+		<%= yield %>
+		</div>
+
+		<div class="span6">
+		    <%= render 'calendar/calendar' if student_signed_in? %>
+		</div>
+	</div>
 	<%= link_to('Sign Out', destroy_student_session_path, :method => :delete) unless not student_signed_in?%>
-</div>
 </body>
 </html>

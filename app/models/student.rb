@@ -9,7 +9,7 @@ class Student < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :courses
   has_many :assessments, through: :courses
-  has_many :assignments, through: :courses, source: :assessments
-  has_many :exams, through: :courses, source: :assessments
+  has_many :assignments, through: :courses, source: :assessments #allow us to refer to student.assignments
+  has_many :exams, through: :courses, source: :assessments #student.exams
   attr_accessible :email, :name
 end

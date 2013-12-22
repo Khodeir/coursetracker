@@ -1,5 +1,4 @@
 class AssessmentsController < ApplicationController
-	before_filter :authenticate_student!
 	before_filter :set_course
 	def get_assessment
 		@course.assessments.find(params[:id])

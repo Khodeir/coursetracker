@@ -1,5 +1,4 @@
 class CoursesController < ApplicationController
-  before_filter :authenticate_student!
   def index
     @courses = current_student.courses
   end
