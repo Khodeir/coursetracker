@@ -1,7 +1,7 @@
 class AssessmentsController < ApplicationController
 	before_filter :set_course
 	def get_assessment
-		@course.assessments.find(params[:id])
+		@assessment=@course.assessments.find(params[:id])
 	end
 	def set_course
 		@course = current_student.courses.find(params[:course_id])
@@ -12,7 +12,7 @@ class AssessmentsController < ApplicationController
 	def new
 	end
 	def create
-		assessment = @course.assessments.build params[:course_assessment]
+		assessment = @course.assessments.build course_params
 		assessment.type = self.type
 		assessment.save
 		@course.save
@@ -27,4 +27,7 @@ class AssessmentsController < ApplicationController
 		flash[:notice] = "#{@assessment.title} was deleted."
 		redirect_to courses_path
 	end
+  def course_params
+    params.require(:course_assessment).permit(:name, :start_at, :end_at, :weight, :type, :belongs_to)
+  end
 end

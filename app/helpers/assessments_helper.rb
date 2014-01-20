@@ -1,3 +1,0 @@
-module AssessmentsHelper
-
-end

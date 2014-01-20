@@ -9,54 +9,48 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131025220745) do
+ActiveRecord::Schema.define(version: 20140120042902) do
 
-  create_table "assessments", :force => true do |t|
+  create_table "assessments", force: true do |t|
     t.string   "name"
     t.integer  "weight"
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "type"
     t.integer  "course_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "colors", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "courses", :force => true do |t|
+  create_table "courses", force: true do |t|
     t.string   "title"
     t.text     "name"
     t.datetime "startDate"
     t.datetime "endDate"
     t.string   "webpage"
     t.integer  "student_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "color_id",   :default => 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "color_id",   default: 1
   end
 
-  create_table "students", :force => true do |t|
+  create_table "students", force: true do |t|
     t.text     "name"
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
   end
 
-  add_index "students", ["email"], :name => "index_students_on_email", :unique => true
-  add_index "students", ["reset_password_token"], :name => "index_students_on_reset_password_token", :unique => true
+  add_index "students", ["email"], name: "index_students_on_email", unique: true
+  add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
 
 end

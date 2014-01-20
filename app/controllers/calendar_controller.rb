@@ -1,7 +1,7 @@
 class CalendarController < ApplicationController
   
   def index
-    prepare_calendar_strips month, year, shown_month
+    prepare_calendar_strips
   end
   
 end
