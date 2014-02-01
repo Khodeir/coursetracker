@@ -1,0 +1,17 @@
+%h2= "#{@course.title} - #{@assessments[0].name}"
+- if @assessments
+  %table{:id => "assessments", :border => "1"}
+    %thead
+      %tr
+        %th Title
+        %th Release Date
+        %th Due Date
+        %th Weight
+    %tbody
+      - @assessments.each do |assessments|
+        %tr
+          %td= link_to assessments.name, edit_course_exam_path(assessments.course, assessments)
+          %td= assessments.start_at
+          %td= assessments.end_at
+          %td= assessments.weight
+= link_to 'Delete Exam', course_exam_path(@course.id, @assessments[0].id), :method => :delete, :confirm => 'Are you sure?'
