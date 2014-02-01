@@ -58,11 +58,11 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
+        <div class="span4">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-        <div class="span6">
+        <div class="span8">
         <%= render 'calendar/calendar' if student_signed_in? %>
         </div>
       </div><!--/row-->
