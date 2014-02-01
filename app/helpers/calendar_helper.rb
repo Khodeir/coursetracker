@@ -19,7 +19,7 @@ module CalendarHelper
     calendar event_calendar_options do |args|
       assessment = args[:event]
       loc = assessment.type.downcase + "s" 
-      %(<a href=/courses/#{assessment.course.id}/#{loc}/#{assessment.id}" title="#{h(assessment.name)}">#{h(assessment.name)}</a>)   
+      %(<a href=/courses/#{assessment.course.id}/#{loc}/#{assessment.id} title="#{h(assessment.name)}">#{h(assessment.name)}</a>)   
     end 
   end
 end
